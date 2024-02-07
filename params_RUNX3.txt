@@ -1,0 +1,19 @@
+[params]
+genome = /shareDB/BioServices/bowtie2_db/mm10/mm10 # bowtie index
+ngs_genome = mm10 # for the ngsplot
+macs2_genome = mm # for peak calling with macs2
+rbs_site_genome = /home/labs/olenderlab/lvzvia/WIS_exp/genome/mm10.fa # genome fasta file. For finding Runx3 motifs in peak regions 
+adaptor1 = GATCGGAAGAGCACACGTCTGAACTCCA # adatper1 for cutadapt
+adaptor2 = AGATCGGAAGAG # adatper2 for cutadapt
+TSS_file = /home/labs/olenderlab/MyPipeLines/ATAC_V2/lib/TSS_+2500_-2500_uniqueProm.bed # parameter is not used
+crude_reads_location_for_merging = /home/labs/olenderlab/lvzvia/groner/Cut_Run/analyses/run74/fastq # location of fastq data. Under this there should be a folder for each sample
+[setup_run] # below one can set with steps of the pipeline should be run. 0-don't run. 1-run
+combine_fastq = 0 # if fastq data are in several files
+fastqc = 0 # run fastqc on the data, for QC
+trim_adapter = 0 # trim fastq data with cutadapt
+make_body = 0 # this step align the data and filter
+make_plots =0 # make QC plots
+nucleosome_free = 1 # nucleosome free is misleading. If value is 1, the pipeline with extract reads with inner distance lower than or equal to "paired-distance" parameter and will store it in "5_nucleosome_free"
+call_peaks = 0 # if 1- the pipeline will perform peak calling with macs2
+countTSS_reads = 0 # ignore this parameter. Not used by the pipeline
+paired_distance = 90 # The inner distance of paired-end reads that is concidered to represent bounded TF
